@@ -78,15 +78,18 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
-          PORT="${DEPLOY_PORT:-5022}"
+          PORT="${DEPLOY_PORT:-22}"
           install -m 700 -d ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p "$PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          echo "SSH_PORT=$PORT" >> "$GITHUB_ENV"
       - name: Sync dist to server
         env:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-        run: rsync -az --delete dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+        run: |
+          PORT="${DEPLOY_PORT:-${SSH_PORT:-22}}"
+          rsync -az -e "ssh -p 5022 --delete dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
