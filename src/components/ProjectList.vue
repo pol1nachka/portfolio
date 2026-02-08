@@ -1,13 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 let wordpress = ref([])
 
 let loaded = ref(false)
 
 let fetchData = async () => {
   try {
-    const response = await fetch('https://polina35.582mi.com/web-portfolio/wp-json/wp/v2/project')
+    const response = await fetch('https://p-api.hrbr.ca/wp-json/wp/v2/project')
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -38,7 +38,7 @@ onMounted(() => {
         :style="{ 'animation-delay': index * 100 + 'ms' }"
         class="project"
       >
-        <RouterLink :to="{ name: 'ProjectView', params: { slug: item.slug } }" 
+        <RouterLink :to="{ name: 'ProjectView', params: { slug: item.slug } }"
         :style="{ height: `${item.height}px` }">
           <figure class="info">
             <p>{{ item.acf.title }}</p>

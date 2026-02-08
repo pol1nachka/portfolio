@@ -1,4 +1,7 @@
 <script setup>
+defineOptions({
+  name: 'ProjectPage',
+})
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
@@ -10,7 +13,7 @@ let loaded = ref(false)
 let fetchData = async () => {
   try {
     const response = await fetch(
-      `https://polina35.582mi.com/web-portfolio/wp-json/wp/v2/project?slug=${route.params.slug}&acf_format=standard`,
+      `https://p-api.hrbr.ca/wp-json/wp/v2/project?slug=${route.params.slug}&acf_format=standard`,
     )
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)

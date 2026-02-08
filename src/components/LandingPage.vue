@@ -7,7 +7,7 @@ let loaded = ref(false)
 let fetchData = async () => {
   try {
     const response = await fetch(
-      'https://polina35.582mi.com/web-portfolio/wp-json/wp/v2/homepage/65/?acf_format=standard',
+      'https://p-api.hrbr.ca/wp-json/wp/v2/homepage/65/?acf_format=standard',
     )
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
