@@ -92,4 +92,5 @@ jobs:
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
           PORT="${DEPLOY_PORT:-${SSH_PORT:-22}}"
-          rsync -az -e "ssh -p 5022 --delete dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+          SSH_CMD="ssh -p $PORT"
+          rsync -az -e "$SSH_CMD" --delete dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
