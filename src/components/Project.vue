@@ -42,7 +42,7 @@ onMounted(() => {
       <figure class="synopsis">
         <p class="synopsis-desc">{{ project.synopsis }}</p>
         <p class="tools">Tools: {{ project.tools }}</p>
-        <a :href=" project.link ">PROJECT LINK</a>
+        <a :href=" project.link " target="_blank">PROJECT LINK</a>
       </figure>
       <figure>
         <img :src="project.project?.url" alt="" />
