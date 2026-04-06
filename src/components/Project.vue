@@ -33,43 +33,56 @@ onMounted(() => {
 
 <template>
   <section class="project">
-    <section class="header">
-      <p class="title">{{ project.title }}</p>
-      <p class="date">{{ project.date }}</p>
+    <div class="hero-bg" :style="{ '--bg-image': `url(${project.project?.url})` }"></div>
+    <section class="content">
+      <section class="header">
+        <p class="title">{{ project.title }}</p>
+        <p class="date">{{ project.date }}</p>
+      </section>
+      <section class="main-desc">
+        <figure class="synopsis">
+          <p>Project</p>
+          <p class="synopsis-desc">{{ project.synopsis }}</p>
+          <p class="tools">Tools: {{ project.tools }}</p>
+          <a :href="project.link">PROJECT LINK</a>
+        </figure>
+      </section>
+      <section class="desc">
+        <figure>
+          <p class="desc-title">Challenge</p>
+          <p>{{ project.challenge }}</p>
+        </figure>
+        <figure>
+          <p class="desc-title">Solution</p>
+          <p>{{ project.solution }}</p>
+        </figure>
+      </section>
     </section>
-    <section></section>
-    <section class="main-desc">
-      <figure class="synopsis">
-        <p class="synopsis-desc">{{ project.synopsis }}</p>
-        <p class="tools">Tools: {{ project.tools }}</p>
-        <a :href=" project.link " target="_blank">PROJECT LINK</a>
-      </figure>
-      <figure>
-        <img :src="project.project?.url" alt="" />
-      </figure>
-    </section>
-    <section class="desc">
-      <figure>
-        <p>Challenge</p>
-        <p>{{ project.challenge }}</p>
-      </figure>
-      <figure>
-        <p>Solution</p>
-        <p>{{ project.solution }}</p>
-      </figure>
-    </section>
-    <section></section>
   </section>
 </template>
 
 <style scoped>
 .project {
-  place-items: center;
-  padding-top: 10rem;
+  padding-top: 50vh;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgba(66, 81, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--bg-image);
 }
 .header {
   width: 100%;
-  background-color: #a9c03e;
+  background-color: transparent;
   padding-bottom: 1em;
   min-height: 7.5em;
   animation: slide 1s;
@@ -77,7 +90,7 @@ onMounted(() => {
 img {
   width: 100%;
   object-fit: cover;
-  aspect-ratio: 4/3;
+  z-index: -1;
 }
 
 @keyframes slide {
@@ -92,9 +105,11 @@ img {
 }
 
 .title {
+  color: #a9c03e;
   font-family: 'audiowide';
   font-size: clamp(24px, 48px, 64px);
-  padding: 1rem;
+  padding-left: 3rem;
+  padding-top: 2rem;
   animation: appear 1.5s;
   animation-delay: 0.1s;
   opacity: 0;
@@ -110,29 +125,31 @@ img {
     opacity: 1;
   }
 }
+.content {
+  position: relative;
+  z-index: 1;
+}
 .date {
   font-family: 'red hat mono';
   font-weight: 100;
   font-size: clamp(16px, 24px, 32px);
-  padding-left: 1rem;
+  padding-left: 3rem;
   animation: appear 1.5s;
   animation-delay: 0.3s;
   opacity: 0;
   animation-fill-mode: forwards;
+  color: #a9c03e;
 }
 .main-desc {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   width: 100%;
   font-family: 'red hat mono';
-  color: #262626;
-  background-color: #a9c03e;
+  color: #a9c03e;
   padding: 2em;
   place-items: center;
   margin-top: 2em;
 }
 .synopsis {
-  max-width: 35em;
+  max-width: 45em;
   padding: 2em;
 }
 .synopsis-desc {
@@ -146,21 +163,26 @@ img {
 }
 .desc {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   place-items: center;
   gap: 2em;
   font-family: 'red hat mono';
   color: black;
-  font-size: clamp(10px, 18px, 24px);
-  max-width: 45rem;
+  font-size: clamp(14px, 24px, 32px);
 }
 .desc figure {
   padding: 2em;
   margin: 2em;
   background-color: #a9c03e;
   border-radius: 10px;
+  max-width: 45em;
 }
-a{
+.desc-title {
+  font-weight: 900;
+  font-size: clamp(24px, 32px, 36px);
+  padding-bottom: 1rem;
+}
+a {
   display: inline-block;
   color: black;
   font-weight: 800;

@@ -7,15 +7,16 @@ let loaded = ref(false)
 
 let fetchData = async () => {
   try {
-    const response = await fetch('https://p-api.hrbr.ca/wp-json/wp/v2/project')
+    const response = await fetch('https://p-api.hrbr.ca/wp-json/wp/v2/project?acf_format=standard')
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
     const data = await response.json()
-    wordpress.value = data.map(item => ({
-  ...item,
-  height: Math.floor(Math.random() * 600) + 300
-}))
+    wordpress.value = data.map((item) => ({
+      ...item,
+      height: Math.floor(Math.random() * 600) + 300,
+      imageUrl: item.acf?.project?.url || '',
+    }))
 
     loaded.value = true
   } catch (error) {
@@ -28,51 +29,58 @@ onMounted(() => {
 </script>
 
 <template>
+  <div v-if="!loaded" class="loading-state">
+    <img src="../IMAGES/v2.gif" alt="Loading..." />
+  </div>
   <section>
     <h1>My work</h1>
     <ul v-if="loaded" class="masonry">
-      <li
+      <RouterLink
         v-for="(item, index) in wordpress"
         :key="item.id"
-        :data-index="index"
-        :style="{ 'animation-delay': index * 100 + 'ms' }"
         class="project"
+        :to="{ name: 'ProjectView', params: { slug: item.slug } }"
+        :style="{
+          animationDelay: `${index * 100}ms`,
+          height: `${item.height}px`,
+          backgroundImage: item.imageUrl ? `url(${item.imageUrl})` : 'none',
+        }"
       >
-        <RouterLink :to="{ name: 'ProjectView', params: { slug: item.slug } }"
-        :style="{ height: `${item.height}px` }">
-          <figure class="info">
-            <p>{{ item.acf.title }}</p>
-            <p>{{ item.acf.date }}</p>
-          </figure>
-        </RouterLink>
-      </li>
+        <figure class="info">
+          <div>
+            <p>{{ item.acf?.title }}</p>
+            <p class="date">{{ item.acf?.date }}</p>
+          </div>
+        </figure>
+      </RouterLink>
     </ul>
   </section>
 </template>
 
-
 <style scoped>
 section {
+  display: block;
+  width: 100%;
   place-items: center;
-  padding-top:10rem;
+  padding-top: 10rem;
 }
-h1{
+h1 {
   color: #a9c03e;
   font-family: 'audiowide';
   padding-bottom: 2rem;
 }
 ul {
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  display: block;
   font-family: 'red hat mono';
-  columns: 5;
-  column-gap: 1rem;
+  columns: 4;
+  column-gap: 2rem;
   width: 80%;
 }
 .project {
+  position: relative;
   list-style: none;
   break-inside: avoid;
-  display: inline-block;
+  display: block;
   width: 100%;
   animation:
     appear 1.5s ease-in,
@@ -80,6 +88,16 @@ ul {
   opacity: 0;
   animation-fill-mode: forwards;
   margin-bottom: 1rem;
+  background-size: cover;
+  background-position: CENTER;
+  background-repeat: no-repeat;
+  background-color: #a9c03e;
+  min-height: 100px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
 }
 @keyframes float {
   0% {
@@ -106,28 +124,48 @@ ul {
   opacity: 0;
   transform: translateY(-40px);
 }
+
 .info {
-  background-color: #a9c03e;
-  border-radius: 10px;
-  padding: 40% 1rem 1rem 1rem;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-image: linear-gradient(rgba(66, 81, 0, 0.7), rgba(0, 0, 0, 0.7));
+  width: 100%;
+  height: 100%;
+  color: #a9c03e;
+  padding: 2rem;
+  text-align: center;
 }
+.project:hover .info {
+  opacity: 1;
+}
+
 a {
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.25em;
-  color: black;
+  font-weight: 900;
+  font-size: 2em;
 }
-p {
-  color: black;
+.date p {
+  font-weight: 100;
 }
-@media screen and (max-width:1024px) {
-  ul{
-    columns: 3;
+@media screen and (max-width: 1024px) {
+  ul {
+    columns: 2;
+  }
+  .project {
+    max-height: 400px;
+    background-position: center;
   }
 }
-@media screen and (max-width:600px) {
-  ul{
-    columns: 2;
+@media screen and (max-width: 600px) {
+  ul {
+    columns: 1;
+  }
+  .project {
+    max-height: 200px;
+    background-position: center;
   }
 }
 </style>
