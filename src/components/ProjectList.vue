@@ -42,14 +42,14 @@ onMounted(() => {
         class="project"
         :to="{ name: 'ProjectView', params: { slug: item.slug } }"
         :style="{
-          animationDelay: `${index * 100}ms`,
+          animationDelay: `${index * 200}ms`,
           height: `${item.height}px`,
           backgroundImage: item.imageUrl ? `url(${item.imageUrl})` : 'none',
         }"
       >
         <figure class="info">
           <div>
-            <p>{{ item.acf?.title }}</p>
+            <p class="pj-title">{{ item.acf?.title }}</p>
             <p class="date">{{ item.acf?.date }}</p>
           </div>
         </figure>
@@ -157,8 +157,11 @@ a {
   font-weight: 900;
   font-size: 2em;
 }
-.date p {
-  font-weight: 100;
+.pj-title {
+  font-family: 'audiowide';
+}
+.date {
+  font-weight: 400;
 }
 @media screen and (max-width: 1024px) {
   ul {
