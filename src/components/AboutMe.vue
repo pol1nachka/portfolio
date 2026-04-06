@@ -26,9 +26,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="landing-page">
+  <div v-if="!loaded" class="loading-state">
+    <img src="../IMAGES/v2.gif" alt="Loading..." />
+  </div>
+  <section v-if="loaded" class="landing-page">
     <figure>
-    <img :src="wordpress.image?.url" alt="" />
+      <img :src="wordpress.image?.url" alt="" />
     </figure>
     <div class="text">
       <h1>{{ wordpress.title }}</h1>
@@ -47,6 +50,11 @@ section {
   grid-template-columns: 1fr 1fr;
   place-items: center;
 }
+.loading-state {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
 .text {
   padding: 3rem;
   background: #00000075;
@@ -62,10 +70,10 @@ img {
   pointer-events: none;
   object-fit: cover;
 }
-.link{
-    background-color: #a9c03e;
-    color: black;
-    padding: 1em;
-    display: inline-block;
+.link {
+  background-color: #a9c03e;
+  color: black;
+  padding: 1em;
+  display: inline-block;
 }
 </style>

@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
+      path: '/aboutme',
+      name: 'aboutme',
+      component: () => import('../views/AboutMeView.vue'),
+    },
+    {
       path: '/projects',
       name: 'project-list',
       component: () => import('../views/ProjectListView.vue'),

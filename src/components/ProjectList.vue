@@ -12,11 +12,12 @@ let fetchData = async () => {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
     const data = await response.json()
-    wordpress.value = data.map((item) => ({
+    const formattedData = data.map((item) => ({
       ...item,
       height: Math.floor(Math.random() * 600) + 300,
       imageUrl: item.acf?.project?.url || '',
     }))
+    wordpress.value = formattedData.sort(() => Math.random() - 0.5)
 
     loaded.value = true
   } catch (error) {
@@ -32,9 +33,9 @@ onMounted(() => {
   <div v-if="!loaded" class="loading-state">
     <img src="../IMAGES/v2.gif" alt="Loading..." />
   </div>
-  <section>
+  <section v-if="loaded">
     <h1>My work</h1>
-    <ul v-if="loaded" class="masonry">
+    <ul class="masonry">
       <RouterLink
         v-for="(item, index) in wordpress"
         :key="item.id"
@@ -63,6 +64,15 @@ section {
   width: 100%;
   place-items: center;
   padding-top: 10rem;
+}
+.loading-state {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+img {
+  height: 100vh;
+  object-fit: cover;
 }
 h1 {
   color: #a9c03e;

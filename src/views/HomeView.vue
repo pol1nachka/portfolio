@@ -1,12 +1,10 @@
 <script setup>
-import AboutMe from '@/components/AboutMe.vue'
 import LandingPage from '@/components/LandingPage.vue'
 </script>
 
 <template>
   <div class="list">
     <LandingPage />
-    <AboutMe />
   </div>
 </template>
 
