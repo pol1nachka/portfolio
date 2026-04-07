@@ -63,7 +63,7 @@ onMounted(() => {
 
 <style scoped>
 .project {
-  padding-top: 50vh;
+  padding-top: 40vh;
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -73,10 +73,10 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50vh;
+  height: 35vh;
   z-index: -1;
   background-size: cover;
-  background-position: 0 0;
+  background-position: center center;
   background-repeat: no-repeat;
   background-image: linear-gradient(rgba(66, 81, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--bg-image);
 }
@@ -109,7 +109,6 @@ img {
   font-family: 'audiowide';
   font-size: clamp(24px, 48px, 64px);
   padding-left: 3rem;
-  padding-top: 2rem;
   animation: appear 1.5s;
   animation-delay: 0.1s;
   opacity: 0;

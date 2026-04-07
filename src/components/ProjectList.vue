@@ -82,7 +82,7 @@ h1 {
 ul {
   display: block;
   font-family: 'red hat mono';
-  columns: 4;
+  columns: 3;
   column-gap: 2rem;
   width: 80%;
 }
@@ -102,7 +102,6 @@ ul {
   background-position: CENTER;
   background-repeat: no-repeat;
   background-color: #a9c03e;
-  min-height: 100px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
