@@ -183,7 +183,7 @@ img {
 }
 a {
   display: inline-block;
-  color: black;
+  color: #a9c03e;
   font-weight: 800;
   font-size: clamp(20px, 24px, 28px);
   margin-top: 2rem;

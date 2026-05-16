@@ -43,7 +43,7 @@ onUnmounted(() => {
     <figure class="links">
       <RouterLink class="link" to="/projects">Projects</RouterLink>
       <RouterLink class="link" to="/aboutme">About me</RouterLink>
-      <a href="../src/IMAGES/POLINA-HIRBU-PORTFOLIO.pdf" download>Portfolio</a>
+      <a href="/POLINA-HIRBU-PORTFOLIO.pdf" download>Portfolio</a>
     </figure>
   </nav>
   <RouterView />

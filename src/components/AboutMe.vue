@@ -37,7 +37,7 @@ onMounted(() => {
       <h1>{{ wordpress.title }}</h1>
       <p>{{ wordpress.description }}</p>
       <RouterLink to="/projects" class="link">Check out my work!</RouterLink>
-      <a href="../src/IMAGES/POLINA-HIRBU-PORTFOLIO.pdf" download>My CV</a>
+      <a class="cv-link" href="/public/CV_POLINA-HIRBU_FR.pdf" download>My CV (FR)</a>
     </div>
   </section>
 </template>
@@ -76,5 +76,10 @@ img {
   color: black;
   padding: 1em;
   display: inline-block;
+}
+.cv-link {
+  color: #a9c03e;
+  text-decoration: none;
+  padding: 1rem;
 }
 </style>
