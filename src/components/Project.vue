@@ -46,6 +46,9 @@ onMounted(() => {
           <p class="tools">Tools: {{ project.tools }}</p>
           <a :href="project.link">PROJECT LINK</a>
         </figure>
+        <figure class="image2" v-if="project.image2">
+          <img :src="project.image2" alt="" />
+        </figure>
       </section>
       <section class="desc">
         <figure>
@@ -63,7 +66,7 @@ onMounted(() => {
 
 <style scoped>
 .project {
-  padding-top: 40vh;
+  padding-top: 50vh;
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -73,7 +76,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 35vh;
+  height: 45vh;
   z-index: -1;
   background-size: cover;
   background-position: center center;
@@ -83,7 +86,6 @@ onMounted(() => {
 .header {
   width: 100%;
   background-color: transparent;
-  padding-bottom: 1em;
   min-height: 7.5em;
   animation: slide 1s;
 }
@@ -143,9 +145,10 @@ img {
   width: 100%;
   font-family: 'red hat mono';
   color: #a9c03e;
-  padding: 2em;
-  place-items: center;
+  padding: 3em;
   margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .synopsis {
   max-width: 45em;
@@ -187,6 +190,9 @@ a {
   font-weight: 800;
   font-size: clamp(20px, 24px, 28px);
   margin-top: 2rem;
+}
+.image2 {
+  padding: 2rem;
 }
 @media screen and (max-width: 600px) {
   .main-desc {
