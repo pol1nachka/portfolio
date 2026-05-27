@@ -37,7 +37,6 @@ onMounted(() => {
       <h1>{{ wordpress.title }}</h1>
       <p>{{ wordpress.description }}</p>
       <RouterLink to="/projects" class="link">Check out my work!</RouterLink>
-      <a class="cv-link" href="/public/CV_POLINA-HIRBU_FR.pdf" download>My CV (FR)</a>
     </div>
   </section>
 </template>
