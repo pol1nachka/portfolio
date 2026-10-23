@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(0, 0, 0);
+}
+p, h1{
+  text-align: center;
+  color: darkgray;
+  margin: 2rem;
+}
+a{
+    color: aliceblue;
+    text-align: center;
+    font-size: 128;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+a:hover{
+    color: blue;
+}
+#footer{
+  text-align: center;
+  object-fit: cover;
+min-height: 100px;
+}
+#wrapper{
+    display: grid;
+     margin:2rem;
+align-items: center;
+
+}
+iframe{
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    padding: 1rem;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    padding: 1rem;
+}

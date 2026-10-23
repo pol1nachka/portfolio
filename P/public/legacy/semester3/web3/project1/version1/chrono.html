@@ -1,0 +1,608 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chrono App Sample</title>
+
+    <style>
+        #analogue g {
+            transform-origin: 50% 50%;
+        }
+
+        #analogue svg {
+            max-height: 50vh;
+        }
+
+        /* Default mode: chrono */
+        .timer {
+            display: none;
+        }
+
+        .mode-buttons button {
+            border-radius: 10px;
+            font-size: 36px;
+            box-shadow: 5px 5px 8px -3px;
+            color: rgb(255, 127, 127);
+            transition-duration: .25s;
+            border: none;
+            text-align: center;
+        }
+
+
+        .mode-chrono {
+            background-color: lavender;
+            animation-name: blackWhite;
+            animation-iteration-count: infinite;
+            animation-duration: 15s;
+            text-align: center;
+        }
+
+        @keyframes blackWhite {
+            0% {
+                background-color: lavender;
+            }
+
+            25% {
+                background-color: rgb(222, 255, 216);
+            }
+
+            50% {
+                background-color: rgb(224, 255, 254);
+            }
+
+            75% {
+                background-color: rgb(216, 216, 255);
+            }
+
+            100% {
+                background-color: lavender;
+            }
+        }
+
+        .mode-timer {
+            background-color: pink;
+            animation-name: whiteBlack;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+        }
+
+        @keyframes whiteBlack {
+            0% {
+                background-color: rgb(255, 221, 249);
+            }
+
+            25% {
+                background-color: rgb(255, 216, 216);
+            }
+
+            50% {
+                background-color: rgb(255, 227, 213);
+            }
+
+            75% {
+                background-color: rgb(255, 241, 216);
+            }
+
+            100% {
+                background-color: rgb(255, 221, 249);
+            }
+        }
+
+        #timer {
+            text-align: center;
+            font-size: 96px
+        }
+
+        form {
+            align-items: center;
+            color: red;
+        }
+
+        #digital {
+            text-align: center;
+            font-family: Impact;
+            font-size: 36px;
+            border: none;
+        }
+
+        span {
+            font-size: 48px;
+        }
+
+        header {
+            font-size: 64px;
+            margin: 0;
+            animation-duration: 1s;
+            animation-name: fadeIn;
+        }
+
+
+
+        .mode-timer h2 {
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(97, 0, 0);
+        }
+
+        h3.timer {
+            margin: 0;
+            color: rgb(182, 86, 86);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .mode-chrono h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(0, 0, 97);
+        }
+
+
+        #digitalF {
+            border-radius: 10px;
+            border: none;
+        }
+
+
+        input {
+            font-family: Impact;
+            font-size: 36px;
+            text-align: center;
+            aspect-ratio: 1/1;
+            max-width: 75px;
+            background-color: rgb(255, 237, 237);
+            color: red;
+            border-radius: 10px;
+            border: 5px red;
+            box-shadow: 5px 5px 8px -3px;
+
+        }
+
+        #analogue {
+            padding: 1rem;
+        }
+
+        header {
+            text-align: center;
+            object-fit: contain;
+        }
+
+        .mode-timer button {
+            padding: 1rem;
+            margin: 1rem;
+            font-size: 24px;
+            font-family: Impact;
+            color: rgb(102, 112, 217);
+            border-style: outset;
+            border-width: 3px;
+        }
+
+        .mode-chrono button {
+            padding: 1rem;
+            margin: 1rem;
+            font-family: Impact;
+            font-size: 24px;
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        #chrono_start_bttn,
+        #timer_start_bttn {
+            background-color: rgb(232, 255, 214);
+            color: green;
+            border-radius: 10px;
+            border: 5px green;
+            box-shadow: 5px 5px 8px -3px;
+        }
+
+        #chrono_pause_bttn,
+        #timer_stop_bttn {
+            background-color: rgb(255, 240, 217);
+            color: rgb(255, 174, 0);
+            border-radius: 10px;
+            border: 5px rgb(255, 174, 0);
+            box-shadow: 5px 5px 8px -3px;
+        }
+
+        #chrono_reset_bttn,
+        #timer_reset_bttn {
+            background-color: rgb(255, 225, 225);
+            color: red;
+            border-radius: 10px;
+            border: 5px red;
+            box-shadow: 5px 5px 8px -3px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h2 {
+                font-size: 36px;
+            }
+
+            h3 {
+                font-size: 24px;
+            }
+        }
+
+        button:hover {
+            transform: scale(1.2);
+            transition-duration: .25s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Plain Chronometre App
+     You must customize this page for the needs of your interface.
+-->
+
+        <nav class="mode-buttons" id="mode">
+            <button id="mode_chrono_bttn" class="timer">Chrono</button>
+            <button id="mode_timer_bttn" class="chrono">Timer</button>
+        </nav>
+
+        <header>
+            <h2 class="chrono">CHRONO</h2>
+            <h2 class="timer">TIMER</h2>
+        </header>
+
+        <div id="clock">
+            <section id="digital">
+                <div class="chrono" id="span">
+                    <!--Spans-->
+                    <span id="d_minutes"> 0 </span>
+                    <span id="dots"> : </span>
+                    <span id="d_seconds">00</span>
+                    <span id="dots"> . </span>
+                    <span id="d_milliseconds"> 00 </span>
+                </div>
+
+                <h3 class="timer">set timer</h3>
+
+                <!--Form-->
+                <form action="" id="digitalF" class="timer">
+                    <input type="number" name="f_minutes" id="f_minutes" value="0"> :
+                    <input type="number" name="f_seconds" id="f_seconds" value="0">
+                </form>
+            </section>
+            <section id="analogue">
+                <svg width="100%" height="100%" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+                    <circle cx="300" cy="300" r="280" style="fill:none;stroke:black;stroke-width:10px"></circle>
+                    <!-- <g id="a_hours">
+                    <path d="M 300 300 L 300 100" style="fill:none;stroke:green;stroke-width:3px;"/>
+                </g> -->
+                    <g id="a_minutes">
+                        <path d="M 300 300 L 300 50" style="fill:none;stroke:rgb(124, 124, 124);stroke-width:10px;" />
+                    </g>
+                    <g id="a_seconds">
+                        <path d="M 300 300 L 300 10" style="fill:none;stroke:rgb(206, 206, 206);stroke-width:5px;" />
+                    </g>
+                </svg>
+            </section>
+        </div>
+
+
+        <nav id="controls">
+            <section class="chrono">
+                <button id="chrono_start_bttn">Start</button>
+                <button id="chrono_pause_bttn" style="display: none;">Pause</button>
+                <button id="chrono_reset_bttn">Reset</button>
+            </section>
+            <section class="timer">
+                <button id="timer_start_bttn">Start</button>
+                <button id="timer_stop_bttn" style="display: none;">Stop</button>
+                <button id="timer_reset_bttn">Reset</button>
+            </section>
+        </nav>
+
+        <audio id="blip">
+            <source src="blip.wav" type="audio/wav">
+        </audio>
+
+    </div><!--wrapper-->
+    <script>
+        //GLOBAL
+        let m = 0; //minutes
+        let s = 0; //seconds
+        let ms = 0
+        let i; //container for interval reference
+        let d = 1; //time direction, 1 up, -1 down
+
+        //TICKER (used to count and display time)
+        const ticker = function () {
+            if (d > 0) { //direction up : chrono
+                if (ms == 99) { //add a minute every 60 seconds
+                    ms = 0;
+                    s++;
+                }
+                else {
+                    ms++;
+                }
+                if (s == 59) { //add a minute every 60 seconds
+                    s = 0;
+                    m++;
+                }
+            }
+            else { //direction down : timer
+
+                if (ms == 0 && (s > 0 || m > 0)) {
+                    ms = 99;
+                    s--;
+                }
+                else {
+                    ms--;
+                }
+                if (s <= 0 && m > 0) { //remove a minute every 60 seconds
+                    s = 59;
+                    m--;
+                }
+                if (s <= 0 && m <= 0 && ms == 0) { //play blip when timer reaches zero
+                    clearInterval(i);
+                    i = null;
+                    document.getElementById("blip").play();
+                }
+            }
+
+            render(); //render at every tick
+        };
+
+        //CHRONO CONTROLS
+        const chrono = function () {
+            //Start
+            document.getElementById("chrono_start_bttn").addEventListener("click", function () {
+                if (!i) {
+                    d = 1; //time direction up
+                    i = setInterval(ticker, 10);
+                }
+                document.getElementById("chrono_start_bttn").style.display = "none";
+                document.getElementById("chrono_pause_bttn").style.display =
+                    "inline";
+            });
+
+            //Pause
+            document.getElementById("chrono_pause_bttn").addEventListener("click", function () {
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+                }
+                document.getElementById("chrono_pause_bttn").style.display = "none";
+                document.getElementById("chrono_start_bttn").style.display =
+                    "inline";
+
+                render();
+            });
+
+            //Reset
+            document.getElementById("chrono_reset_bttn").addEventListener("click", function () {
+                m = 0;
+                s = 0;
+                ms = 0;
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+                }
+                document.getElementById("chrono_pause_bttn").style.display = "none";
+                document.getElementById("chrono_start_bttn").style.display =
+                    "inline";
+                render();
+            });
+            document.getElementById("mode_chrono_bttn").addEventListener("click", function () {
+                m = 0;
+                s = 0;
+                ms = 0;
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+                }
+
+
+                render();
+            });
+
+        };
+        chrono();
+
+        //TIMER CONTROLS
+
+
+        const countdown = function () { //we use “countdown” because timer is a JS keyword
+            //Start
+            document.getElementById("timer_start_bttn").addEventListener("click", function () {
+                if (!i) {
+                    if (!(ms == 0 && s == 0 && m == 0)) {  //don’t start the timer if clock is at zero
+                        d = -1; //time direction down
+                        i = setInterval(ticker, 10);
+                    }
+                }
+                document.getElementById("timer_start_bttn").style.display = "none";
+                document.getElementById("timer_stop_bttn").style.display =
+                    "inline";
+            });
+
+            //Stop
+            document.getElementById("timer_stop_bttn").addEventListener("click", function () {
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+                }
+                document.getElementById("timer_stop_bttn").style.display = "none";
+                document.getElementById("timer_start_bttn").style.display =
+                    "inline";
+                render();
+            });
+
+            document.getElementById("mode_timer_bttn").addEventListener("click", function () {
+                m = 0;
+                s = 0;
+                ms = 0;
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+                }
+                document.getElementById("span").style.display = "none";
+                document.getElementById("").style.display = none
+                render();
+            });
+            document.getElementById("timer_reset_bttn").addEventListener("click", function () {
+                m = 0;
+                s = 0;
+                ms = 0;
+                if (i) {
+                    clearInterval(i);
+                    i = null;
+
+                }
+                document.getElementById("timer_stop_bttn").style.display = "none";
+                document.getElementById("timer_start_bttn").style.display =
+                    "inline";
+                render();
+            });
+
+            //we could add a reset button too, no?
+        };
+        countdown();
+
+        //RENDER
+        const render = function () {
+            let f_minutes = document.getElementById("f_minutes");
+            let f_seconds = document.getElementById("f_seconds");
+
+            let d_minutes = document.getElementById("d_minutes");
+            let d_seconds = document.getElementById("d_seconds");
+            let d_milliseconds = document.getElementById("d_milliseconds");
+
+            //Set value of minutes into form and spans
+            f_minutes.value = d_minutes.innerHTML = m;
+
+            //Deal with user changing the value from the form
+            f_minutes.addEventListener("change", function () {
+                m = Number(f_minutes.value);
+                render();
+            });
+
+            //Set the seconds in the form
+            f_seconds.value = s;
+
+            //For the spans, we will add a 0 if seconds are lower than 10, looks cooler
+            if (s < 10) {
+                d_seconds.innerHTML = "0" + s;
+            }
+            else {
+                d_seconds.innerHTML = s;
+            }
+            if (ms < 10) {
+                d_milliseconds.innerHTML = "0" + ms;
+            }
+            else {
+                d_milliseconds.innerHTML = ms;
+            }
+            if (m < 10) {
+                d_minutes.innerHTML = "0" + m;
+            }
+            else {
+                d_minutes.innerHTML = m;
+            }
+
+            //Deal with user changing value form the form
+            f_seconds.addEventListener("change", function () {
+                ms = Number(f_seconds.value);
+                render();
+            });
+
+
+            //Render the analogue clock
+            document.getElementById("a_minutes").style.transform = "rotate(" + m * 6 + "deg)";
+            document.getElementById("a_seconds").style.transform = "rotate(" + s * 6 + "deg)";
+
+        };
+        render();
+
+        //setup chrono2 
+
+        //MODES & UI
+        const ui = function () {
+
+            let mode = localStorage.getItem('mode') || 'chrono';
+
+            //Buttons
+            let c_mode_bttn = document.getElementById("mode_chrono_bttn");
+            let t_mode_bttn = document.getElementById("mode_timer_bttn");
+
+
+            function setChronoMode() {
+                document.body.classList.remove("mode-timer");
+                document.body.classList.add("mode-chrono");
+
+                let on = document.getElementsByClassName("chrono");
+                for (c = 0; c < on.length; c++) {
+                    on[c].style.display = "block";
+                }
+                let off = document.getElementsByClassName("timer");
+                for (c = 0; c < off.length; c++) {
+                    off[c].style.display = "none";
+                }
+            }
+
+            function setTimerMode() {
+                document.body.classList.remove("mode-chrono");
+                document.body.classList.add("mode-timer");
+
+                let on = document.getElementsByClassName("timer");
+                for (c = 0; c < on.length; c++) {
+                    on[c].style.display = "block";
+                }
+                let off = document.getElementsByClassName("chrono");
+                for (c = 0; c < off.length; c++) {
+                    off[c].style.display = "none";
+                }
+            }
+
+
+            //Setup chrono mode
+            c_mode_bttn.addEventListener("click", function () {
+                localStorage.setItem('mode', 'chrono');
+                setChronoMode();
+
+            });
+
+            //Setup timer mode
+            t_mode_bttn.addEventListener("click", function () {
+                localStorage.setItem('mode', 'timer');
+                setTimerMode();
+            });
+
+            if (mode === 'chrono') {
+                setChronoMode();
+
+            } else {
+                setTimerMode();
+                document.body.classList.add("mode-timer");
+            }
+        };
+
+        ui();
+
+
+        //CLOCK
+        //I leave this here for you to explore, if you want
+        // let clockF = function () {
+        //     let t = new Date();
+        //     let h = t.getHours();
+        //     let m = t.getMinutes() < 10 ? "0"+t.getMinutes() : t.getMinutes();
+        //     let s = t.getSeconds() < 10 ? "0"+t.getSeconds() : t.getSeconds();
+
+        //     document.getElementById("a_hours").style.transform="rotate("+h*30+"deg)";
+        //     document.getElementById("a_minutes").style.transform="rotate("+m*6+"deg)";
+        //     document.getElementById("a_seconds").style.transform="rotate("+s*6+"deg)";
+        // };
+        // window.setInterval(clockF,1000);
+
+    </script>
+</body>
+
+</html>

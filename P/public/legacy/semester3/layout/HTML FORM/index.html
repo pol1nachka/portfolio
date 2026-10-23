@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML form</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <figure><img src="./svg/Asset 3@2x.png" alt="">
+        </figure>
+    </header>
+    <section class="title">
+        <h1>SIP N SNUGGLE DRAW</h1>
+        <h2><span class="highlight">SIGN UP FOR A CHANCE TO WIN AN</span> A&W PLUSH <span class="highlight">OR AN
+            </span> A&W ROOT BEER MUG!</h2>
+    </section>
+    <div class="wrapper">
+
+        <div class="prize">
+            <h2>PRIZES</h2>
+            <div class="plush">
+                <figure>
+                    <img src="./svg/Asset 2@2x.png" alt="">
+                </figure>
+            </div>
+            <h2>DEADLINE TO SUBMIT IS <span class="underline">OCTOBER 3RD</span></h2>
+        </div>
+        <div class="container">
+            <form action="https://formsubmit.co/193b978a954223446e6372dd296f0799" method="POST">
+                <h2>SUBMISSION FORM</h2>
+
+                <div class="form">
+                    <figure>
+                        <label for="fname">Surname</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Name" required>
+                    </figure>
+                    <figure>
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Last Name" required>
+                    </figure>
+                    <figure>
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" placeholder="Email" required>
+                    </figure>
+                    <figure>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="Phone Number" required>
+                    </figure>
+                    <figure>
+                        <label for="street">Street</label>
+                        <input type="text" id="street" name="street" placeholder="Street" required>
+                    </figure>
+                    <figure>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="City" required>
+                    </figure>
+                    <figure>
+                        <label for="postalcode">Postal Code</label>
+                        <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code" required>
+                    </figure>
+                    <figure>
+                        <label for="province">Province</label>
+                        <select id="province" name="province" required>
+                            <option value="">Select</option>
+                            <option value="alberta">Alberta</option>
+                            <option value="bc">British Columbia</option>
+                            <option value="manitoba">Manitoba</option>
+                            <option value="newbrunswick">New Brunswick</option>
+                            <option value="newfoundland">Newfoundland and Labrador</option>
+                            <option value="northwestterritories">Northwest Territories</option>
+                            <option value="novascotia">Nova Scotia</option>
+                            <option value="nunavut">Nunavut</option>
+                            <option value="ontario">Ontario</option>
+                            <option value="edp">Prince Edward Island</option>x
+                            <option value="quebec">Quebec</option>
+                            <option value="saskatchewan">Saskatchewan</option>
+                            <option value="yukon">Yukon</option>
+
+
+                        </select>
+                    </figure>
+                    <figure>
+                        <label for="DOB">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </figure>
+
+                </div>
+
+                <div>
+                    <h3>Where did you hear about this contest?</h3>
+                    <div class="radio">
+                        <figure>
+                            <label>
+                                <input type="radio" name="heard" value="instagram">
+                                Instagram
+                            </label>
+                        </figure>
+                        <figure>
+                            <label>
+                                <input type="radio" name="heard" value="facebook">
+                                Facebook
+                            </label>
+                        </figure>
+                        <figure>
+                            <label>
+                                <input type="radio" name="heard" value="friend">
+                                Person I know
+                            </label>
+                        </figure>
+                        <figure>
+                            <label>
+                                <input type="radio" name="heard" value="youtube">
+                                Youtube
+                            </label>
+                        </figure>
+
+                    </div>
+                    <figure>
+                        <label>
+                            <input type="radio" id="other" name="heard" value="other">
+                            Other
+                        </label for="other">
+                    </figure>
+
+                    <div id="otherInput">
+                        <label for="otherText">Please specify:</label>
+                        <input type="text" id="otherText" name="otherText" placeholder="Please specify">
+                    </div>
+                    <figure><label for="subject">What is 9 + 10?</label>
+                        <textarea id="subject" name="subject" placeholder="Answer"></textarea>
+                    </figure>
+                    <figure>
+                        <label for="DOB">By checking, you accept the <a href="./terms/index.html">Terms and
+                                Conditions.</a></label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                    </figure>
+                    <div class="submission">
+                        <figure>
+                            <input type="submit" value="Submit">
+                        </figure>
+                        <figure>
+                            <input type="reset" value="Reset">
+                        </figure>
+                    </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="./index.js"></script>
+
+</html>

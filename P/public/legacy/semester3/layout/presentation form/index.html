@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <form id="regForm" action="https://formsubmit.co/2368835@edu.vaniercollege.qc.ca" method="POST">
+
+        <h1>Overconsumption presentation:</h1>
+
+        <div class="tab">Name:
+            <p><input name="fname" placeholder="First name..." oninput="this.className = ''"></p>
+            <p><input name="lname" placeholder="Last name..." oninput="this.className = ''"></p>
+        </div>
+
+        <div class="tab">Were you aware of the issue of overconsuming beforehand?
+            <figure>
+                <p><input name="awareness" class="other" type="radio" name="awareness" value="yes">Yes</p>
+            </figure>
+            <figure>
+                <p><input name="awareness" class="other" type="radio" name="awareness" value="no">No</p>
+            </figure>
+
+        </div>
+
+        <div class="tab">What are ways to help against overconsuming?
+            <p><input name="ways" placeholder="Type here..." oninput="this.className = ''"></p>
+
+        </div>
+
+        <div class="tab">Any feedback on the presentation?
+            <p><input name="feedback" placeholder="Type here..." oninput="this.className = ''"></p>
+        </div>
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+
+    </form>
+</body>
+<script src="./index.js"></script>
+
+</html>
