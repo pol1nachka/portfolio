@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Play Pirate Rush!</title>
+    <link rel="stylesheet" href="game.css">
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+            background-image: url("images/waterbg.png")
+        }
+
+        .arrow {
+            position: absolute;
+            background: none;
+            width: 3em;
+            height: 3em;
+        }
+
+        #uArrow {
+            top: 0px;
+            width: 100%;
+        }
+
+        #dArrow {
+            bottom: 0px;
+            width: 100%;
+        }
+
+        #lArrow {
+            left: 0px;
+            height: 100%;
+        }
+
+        #rArrow {
+            right: 0px;
+            height: 100%;
+        }
+
+        #gameBox {
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <nav>
+
+        <div id="lArrow" class="arrow"></div>
+        <div id="rArrow" class="arrow"></div>
+    </nav>
+
+    <audio id="coin">
+        <source src="images/coin.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="explosion">
+        <source src="images/explosion.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="bgmusic">
+        <source src="images/bgmusic.mp3" type="audio/mp3">
+    </audio>
+    <audio id="munch">
+        <source src="images/munch.mp3" type="audio/mp3">
+    </audio>
+    <audio id="splash">
+        <source src="images/splash.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="gameBox">
+        <script src="game.js"></script>
+    </div>
+
+
+</body>
+
+</html>

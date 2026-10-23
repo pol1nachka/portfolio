@@ -1,0 +1,319 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: rgb(0, 0, 0);
+    min-height: 100vh;
+}
+.container{
+    display: inline-block;
+    margin: auto;
+}
+.title{
+ display: grid;
+ align-items: center;
+    margin: auto;
+    animation: animate 5s linear infinite;
+    padding-top: 30px;
+}
+.header{
+    position: relative;
+    font-family: "gloridot", sans-serif;
+    font-size: 4em;
+font-weight: 400;
+font-style: normal;
+text-align: center;
+letter-spacing: 10px;
+color: #0a1d1f;
+border-right: 5px solid #30c1d1 ;
+outline: none;
+overflow: hidden;
+animation: typing 2s steps(21), cursor .8s infinite alternate, animate 5s linear infinite;
+white-space: nowrap;
+}
+/* cursor blinking */
+@keyframes cursor {
+    50%{ border-color: transparent;}
+}
+/* typing anim */
+@keyframes typing {
+    from{ width: 0}
+ to{width: 100%}
+
+}
+@keyframes animate{ 0%, 18% ,20%,50.1%, 60%, 65.1%, 80%, 90.1%, 92%
+    { text-shadow: none;
+    color: #112123 ;
+}
+    18.1%, 20.1%, 30%, 50%, 60.1%,65%, 80.1%, 90%, 92.1%, 100%{
+        color: #ffff;
+        text-shadow: 0 0 10px #24bacb;
+        text-shadow: 0 0 20px  #24bacb;
+    }
+}
+
+/* .wrapper{
+display: flex;    
+flex-direction: column;            
+justify-content: center;     
+align-items: center;                         
+padding: 20px;
+z-index: 1;   
+text-align: center; 
+width: 100%;           
+} */
+ .portfolio-entry{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px,1fr));
+    max-width: 75em;
+    place-self: center;
+ }
+figure{
+    padding: 20px;
+}
+nav{
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding:30px ;
+    padding-right: 0;
+    text-align: center;
+    background-color: rgb(13, 16, 17);
+    z-index: 1;
+    margin-bottom: 100px;
+}
+nav a{
+    margin-right: 20px;
+}
+.contact{
+    width: 100%;
+    background-color: #0a0d0e;
+    text-align: center;
+    margin-top: 100px;
+}
+.contact div{
+    padding: 10px;
+}
+.contact p{
+   font-family: "vox", sans-serif;
+font-weight: 300;
+font-style:normal;;
+}
+.contact h1{
+      font-family: "vox", sans-serif;
+font-weight: 700;
+font-style: normal;
+color: #30ccdd;
+padding: 10px;
+}
+.portfolio-entry h2{
+    text-align: center;
+      font-family: "vox", sans-serif;
+font-weight: 700;
+font-style: normal;
+color: #30ccdd;
+padding: 10px;
+}
+a{
+    font-family: "vox", sans-serif;
+font-weight: 300;
+font-style:normal;;
+position: relative;
+text-decoration: none;
+font-size: 24px;
+letter-spacing: 3px;
+padding: 0 10px;
+color: #3a9eba;
+transition: 0.5s;
+}
+a::after{
+content: "";
+position: absolute;
+background-color: #30ccdd;
+height: 3px;
+width: 0%;
+left: 0;
+bottom: -5px;
+opacity: 50%;
+}
+a:hover:after{
+width: 100%;
+opacity: 100%;
+transition: 0.5s;
+}
+a:hover{
+    font-family: "vox", sans-serif;
+font-weight: 700;
+font-style: normal;
+    color: aliceblue;
+    text-shadow: 0 0 10px #30c1d1 ;
+    
+}
+.future{
+    color: #04242c;
+}
+
+.line{
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+
+}
+.line-1{
+    z-index: 15;
+    opacity: 0.3;
+}
+.line-2{
+    z-index: 10;
+    opacity: 0.5;
+}
+.line-3{
+    z-index: 5;
+    opacity: 0.7;
+}
+.bg-anim{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+     width: 100%;
+     height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.wave{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    height: 100vh;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+
+}
+.wave1{
+   
+    background-size: 40% 80px;
+    animation: wave 5s linear infinite;
+}
+.wave2{
+
+    background-size: 50% 100px;
+    animation: wave 12s linear infinite;
+}
+.wave3{
+    background-size: 50% 80px;
+    animation: wave 18s linear infinite;
+}
+@keyframes wave {
+    0%{
+        transform: translateX(0) scaleY(1);
+    }
+    50%{
+        transform: translateX(-25%) scaleY(0.5);
+    }
+    100%{
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Push it to the back */
+    pointer-events: none;
+}
+#particles-js canvas {
+    pointer-events: auto; /* Enable interaction for particles.js canvas */
+}
+.foreground {
+    position: relative; 
+    z-index: 1; 
+    pointer-events: auto;
+}
+#wrapper p{
+    width: 100%;
+}
+nav p{
+    font-family: "vox", sans-serif;
+font-weight: 700;
+font-style: normal;
+color: aliceblue;
+margin-right: auto;
+font-size: 24px;
+padding: 0 30px;
+}
+.portfolio-entry p{
+     font-family: "vox", sans-serif;
+font-weight: 400;
+font-style: normal;
+color: aliceblue;
+font-size: 24px;
+padding: 0 30px;
+max-width: 35em;
+}
+.wrapper p{
+     font-family: "vox", sans-serif;
+font-weight: 400;
+font-style: normal;
+color: aliceblue;
+font-size: 24px;
+padding: 0 30px;
+max-width: 35em;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+     margin:2rem;
+align-items: center;
+gap: 2em;
+
+}
+iframe{
+    width: 80%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    padding: 1rem;
+}
+.bold{
+    font-weight: 900;
+}
+@media (max-width: 768px) {
+  .bg-anim {
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+  }
+  nav {
+    width: 100vw;
+  }
+nav a{
+    margin-right: auto;
+    font-size: smaller;
+}
+  .wave {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    transform-origin: center bottom; 
+  }
+  .header{
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+  .wrapper p{
+font-size: 16px;
+padding: 0.5em;
+  }
+  .wrapper a{
+    font-size: 16px;
+  }
+}

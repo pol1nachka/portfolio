@@ -1,0 +1,49 @@
+body{
+    background-color: black;
+}
+h1{
+    color: aliceblue;
+    text-align: center;
+    padding: 2rem;
+}
+#wrapper{
+    display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.44rem;
+padding: 0 2rem;
+max-width: 50%;
+align-items: center;
+}
+iframe{
+    width: 100%;
+    aspect-ratio: 4/3;
+}
+p{
+    color: aliceblue;
+    text-align: center;
+    object-fit: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 32px;
+}
+figure img {
+    width: 70%;
+    object-fit: cover;
+}
+
+figure video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+footer {
+ text-align: center;
+ padding: 1rem;
+}
+a{ color: darkgray;
+  text-align: center;
+  font-size: 24px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+a:hover {
+  color: rgb(108, 51, 51);
+}

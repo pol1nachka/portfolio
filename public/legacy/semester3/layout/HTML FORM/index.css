@@ -1,0 +1,166 @@
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea,input[type=date] {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 5px solid #523122; /* Gray border */
+  border-radius: 35px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #F06731;
+  color: #FFF37D;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Jomhuria;
+  font-size: 48px;
+  width: 100%;
+}
+input[type=reset] {
+  background-color: #F06731;
+  color: #FFF37D;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Jomhuria;
+  font-size: 48px;
+  width: 100%;
+}
+label{
+    color: #523122;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Jomhuria;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+h3{
+  color: #523122;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  font-family: Jomhuria;
+  font-size: 48px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  transform: scale(1.1);
+  transition-duration: .25s;
+}
+input[type=reset]:hover {
+  transform: scale(1.1);
+  transition-duration: .25s;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 20px;
+  background-color: #FFF37D;
+  padding: 2rem;
+}
+.prize {
+  border-radius: 20px;
+  background-color: #F06731;
+  padding: 2rem;
+}
+.form{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+.submission{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.44rem;
+}
+figure{
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+}
+.jomhuria-regular {
+  font-family: "Jomhuria", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.wrapper{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+gap: 1.44rem;
+padding: 0 2rem;}
+body{
+    background-color: #523122;
+    padding: 0%;
+margin: 0;}
+h2{
+    text-align: center;
+    font-family: Jomhuria;
+    font-size: 64px;
+    margin: 0;
+    color: #F06731;
+    letter-spacing: 2px;
+}
+h1{
+    text-align: center;
+    font-family: Jomhuria;
+    font-size: 128px;
+    margin: 0;
+    color:#523122;
+    letter-spacing: 2px;
+    width: 100%;
+}
+.prize h2{
+    color:#FFF37D;
+}
+.prize img{
+    width: 100%;
+}
+@media screen and (max-width: 800px) { 
+    .wrapper{
+        display: block;
+    }
+    
+}
+.title{
+    background-color: #FFF37D;
+    margin-bottom: 20px;
+}
+header{
+    background-color: #F06731;
+    padding: 0%;
+    margin: 0;
+}
+.radio{
+  display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.44rem;
+}
+.radio figure{
+  padding: 0;
+}
+#otherInput {
+      display: none; 
+    }
+
+.highlight{
+      color: #523122;
+    }
+    .underline{
+      text-decoration: underline;
+    }

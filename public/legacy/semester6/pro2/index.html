@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Practices</title>
+    <link rel="stylesheet" href="https://use.typekit.net/ouk7yqv.css">
+</head>
+
+<body>
+    <nav>
+        <p>Polina Hirbu</p>
+        <a href="https://vaniercollege.omnivox.ca/Login/Account/Login?ReturnUrl=%2fintr%2f">OMNIVOX</a>
+        <a href="https://582mi.com/">582MI</a>
+        <a href="/index.html">HOME</a>
+        <a href="../index.html">SEM 6</a>
+    </nav>
+    <div class="title">
+        <div class="container">
+            <p class="header">Professional Practices 2</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <a
+            href="https://www.figma.com/design/0V92cQ9XJHRVrbBNPRatSD/Untitled?node-id=0-1&t=m1wIQvceDakknc5o-1">Figma</a>
+        <a href="https://youtu.be/SwoUj21wyNA?si=hKW6cLo6TO9ztfQk">MULTIMEDIA IMPROVED PROJECT</a>
+        <a href="https://polina35.582mi.com/semester3/web3/v2/index.html">WEB IMPROVED PROJECT</a>
+        <a href="./files/zoovrac-case-study.pdf" download>CASE STUDY 1: CLIENT</a>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+
+    }
+
+    body {
+        background-color: rgb(0, 0, 0);
+        min-height: 100vh;
+    }
+
+    .container {
+        display: inline-block;
+        margin: auto;
+    }
+
+    .title {
+        display: flex;
+        margin: auto;
+        animation: animate 5s linear infinite;
+        padding-top: 30px;
+    }
+
+    .header {
+        position: relative;
+        font-family: "gloridot", sans-serif;
+        font-size: 4em;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        letter-spacing: 10px;
+        color: #0a1d1f;
+        border-right: 5px solid #A9C03E;
+        outline: none;
+        overflow: hidden;
+        animation: typing 2s steps(18), cursor .8s infinite alternate, animate 5s linear infinite;
+        white-space: nowrap;
+    }
+
+    /* cursor blinking */
+    @keyframes cursor {
+        50% {
+            border-color: transparent;
+        }
+    }
+
+    /* typing anim */
+    @keyframes typing {
+        from {
+            width: 0
+        }
+
+        to {
+            width: 100%
+        }
+
+    }
+
+    @keyframes animate {
+
+        0%,
+        18%,
+        20%,
+        50.1%,
+        60%,
+        65.1%,
+        80%,
+        90.1%,
+        92% {
+            text-shadow: none;
+            color: #112123;
+        }
+
+        18.1%,
+        20.1%,
+        30%,
+        50%,
+        60.1%,
+        65%,
+        80.1%,
+        90%,
+        92.1%,
+        100% {
+            color: #ffff;
+            text-shadow: 0 0 10px #A9C03E;
+            text-shadow: 0 0 20px #A9C03E;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 1;
+    }
+
+    figure {
+        padding: 20px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px;
+        padding-right: 0;
+        text-align: center;
+        background-color: rgb(13, 16, 17);
+        z-index: 1;
+        margin-bottom: 100px;
+    }
+
+    nav a {
+        margin-right: 20px;
+    }
+
+    .contact {
+        width: 100%;
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    .contact div {
+        padding: 10px;
+    }
+
+    .contact p {
+        font-family: "vox", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        ;
+    }
+
+    .contact h1 {
+        font-family: "vox", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: #A9C03E;
+        padding: 10px;
+    }
+
+    a {
+        font-family: "vox", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        ;
+        position: relative;
+        text-decoration: none;
+        font-size: 24px;
+        letter-spacing: 3px;
+        padding: 10px;
+        color: #A9C03E;
+        transition: 0.5s;
+    }
+
+    a::after {
+        content: "";
+        position: absolute;
+        background-color: #A9C03E;
+        height: 3px;
+        width: 0%;
+        left: 0;
+        bottom: -5px;
+        opacity: 50%;
+    }
+
+    a:hover:after {
+        width: 100%;
+        opacity: 100%;
+        transition: 0.5s;
+    }
+
+    a:hover {
+        font-family: "vox", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: aliceblue;
+        text-shadow: 0 0 10px #A9C03E;
+
+    }
+
+    .future {
+        color: #1f2c04;
+    }
+
+    .line {
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+
+    }
+
+    .line-1 {
+        z-index: 15;
+        opacity: 0.3;
+    }
+
+    .line-2 {
+        z-index: 10;
+        opacity: 0.5;
+    }
+
+    .line-3 {
+        z-index: 5;
+        opacity: 0.7;
+    }
+
+    .bg-anim {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    @keyframes wave {
+        0% {
+            transform: translateX(0) scaleY(1);
+        }
+
+        50% {
+            transform: translateX(-25%) scaleY(0.5);
+        }
+
+        100% {
+            transform: translateX(-50%) scaleY(1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bg-anim {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        nav {
+            width: 100vw;
+        }
+
+        nav a {
+            margin-right: auto;
+            font-size: smaller;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform-origin: center bottom;
+        }
+
+        .header {
+            font-size: 36px;
+            letter-spacing: 2px;
+            max-width: 60%;
+        }
+    }
+
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        /* Push it to the back */
+        pointer-events: none;
+    }
+
+    #particles-js canvas {
+        pointer-events: auto;
+        /* Enable interaction for particles.js canvas */
+    }
+
+    .foreground {
+        position: relative;
+        z-index: 1;
+        pointer-events: auto;
+    }
+
+    p {
+        font-family: "vox", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: aliceblue;
+        margin-right: auto;
+        font-size: 24px;
+        padding: 0 30px;
+    }
+
+    video {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        object-fit: cover;
+    }
+</style>
